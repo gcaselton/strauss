@@ -1,0 +1,3 @@
+[submodule "sonification-toolkit"]
+	path = sonification-toolkit
+	url = https://github.com/gcaselton/sonification-toolkit.git
