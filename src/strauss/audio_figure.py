@@ -297,11 +297,16 @@ class AudioFigure:
         
         if 'pitch' not in to_map:
             to_map.append('pitch')
-            nnote = len(style.notes)
-            for k in map_data.keys():
-                map_data[k] = [map_data[k]]*nnote
-            map_data['pitch'] = list(range(nnote))
-            to_map.append('pitch')
+            
+            if style.sources == 'objects':
+                nnote = len(style.notes)
+                for k in map_data.keys():
+                    # Use a list of arrays for Objects
+                    map_data[k] = [map_data[k]]*nnote
+                map_data['pitch'] = list(range(nnote))
+            
+            else:  # Events
+                map_data["pitch"] = [0]
         
         # we now iterate through style fixed values
         for i in range(nmap, len(style.map)):
